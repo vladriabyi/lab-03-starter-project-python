@@ -1,10 +1,10 @@
-FROM python:3.10-buster
+FROM python:3.10-alpine
 
 WORKDIR /app
 
 COPY requirements/backend.in /app/backend.in
 RUN python3 -m venv ./.venv && \
-    /bin/bash -c "source ./.venv/bin/activate && pip install --no-cache-dir -r /app/backend.in"
+    /bin/sh -c ". ./.venv/bin/activate && pip install --no-cache-dir -r /app/backend.in"
 
 COPY build /app/build
 COPY spaceship /app/spaceship
